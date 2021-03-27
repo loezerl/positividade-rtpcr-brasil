@@ -34,7 +34,7 @@ Autor - Lucas Loezer (loezer.lucas@gmail.com) | https://github.com/loezerl/
 """)
 st.write("Abaixo o percentual de PCR-Positivo distribuído por data e faixas etárias")
 
-df = pd.read_excel("eSUS_SRAG_Pronta2.xlsx")
+df = pd.read_csv("eSUS_SRAG_Pronta2.csv", sep=',')
 
 df.replace(np.nan, 0, inplace=True)
 df['Data'] = pd.to_datetime(df['Data'], format="%Y-%m-%d")
