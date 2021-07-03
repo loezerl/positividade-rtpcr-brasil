@@ -82,7 +82,13 @@ df_plot = df.set_index('Data')
 st.subheader("Gráfico de positivos (%) por faixa etária")
 st.area_chart(df_plot[plot_columns])
 st.subheader("Gráfico de positividade (%)")
-st.line_chart(df_plot['positividade'])
+df_plot['media_movel_7d'] = df_plot['positividade'].rolling(7).mean()
+st.line_chart(df_plot[['positividade', 'media_movel_7d']])
+
+df_plot = df.set_index('Data')
+st.subheader("Gráfico de RT-PCRs realizados")
+df_plot['media_movel_7d'] = df_plot['pcr'].rolling(7).mean()
+st.line_chart(df_plot[['pcr', 'media_movel_7d']])
 
 for pc in plot_columns:
     st.subheader("Percentual {}".format(pc[:-14]))
