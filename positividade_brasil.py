@@ -25,7 +25,6 @@ As informações contidas no relatório são:
 - Quantidade de RT-PCR negativos por dia.
 - Quantidade de RT-PCR positivos nas faixas etárias: [0, 4], [5, 9], [10, 14], [15, 19], 
 [20, 29], [30, 39], [40, 49], [50, 59] [60, 69], [70, 79], [80, 999].
-- Quantidade de óbitos para RT-PCR positivos.
 
 Com base nessas informações é possível analisar graficamente quais faixas etárias estão testando positivo para o novo coronavírus.
 Por enquanto, o gráfico é contemplando o território brasileiro.
@@ -34,11 +33,11 @@ Autor - Lucas Loezer (loezer.lucas@gmail.com) | https://github.com/loezerl/
 """)
 st.write("Abaixo o percentual de PCR-Positivo distribuído por data e faixas etárias")
 
-df = pd.read_csv("eSUS_SRAG_Pronta2.csv", sep=',')
+df = pd.read_csv("eSUS_SRAG_Pronta_20210703.csv", sep=',')
 
 df.replace(np.nan, 0, inplace=True)
 df['Data'] = pd.to_datetime(df['Data'], format="%Y-%m-%d")
-df = df[df['Data'] < pd.to_datetime("2021-03-05")]
+df = df[df['Data'] < pd.to_datetime("2021-06-30")]
 
 col1, col2 = st.beta_columns(2)
 
