@@ -38,7 +38,6 @@ df = pd.read_csv("eSUS_SRAG_Pronta202022.csv", sep=',')
 
 df.replace(np.nan, 0, inplace=True)
 df['Data'] = pd.to_datetime(df['Data'], format="%Y-%m-%d")
-df = df[df['Data'] < pd.to_datetime("2021-06-30")]
 
 col1, col2 = st.beta_columns(2)
 
